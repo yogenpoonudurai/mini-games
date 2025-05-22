@@ -39,26 +39,24 @@ const SummaryScreen: React.FC<SummaryScreenProps> = ({ onReplay }) => {
         {events.map((event: Event, index: number) => (
           <div key={index} className="mb-8 p-4 border border-gray-700 rounded-lg w-full">
             <h3 className="text-xl font-semibold text-gray-100 mb-2">Event {index + 1}: {event.scenario}</h3>
-            <Image src={event.image} alt="Event illustration" width={200} height={150} className="mx-auto mb-4" />
+            <Image src={event.image} alt="Event illustration" width={150} height={150} className="mx-auto mb-4" />
 
             <div className="mb-4">
               <h4 className="text-lg font-medium text-gray-200 mb-2">With Insurance:</h4>
               <p className="text-md text-gray-300">{event.outcomeInsured.message}</p>
-              <p className="text-sm text-gray-400">
+              <p className="text-md text-white font-bold">
                 Happiness: {event.outcomeInsured.happinessChange > 0 ? '+' : ''}{event.outcomeInsured.happinessChange},
                 Gold: {event.outcomeInsured.goldChange > 0 ? '+' : ''}{event.outcomeInsured.goldChange}
               </p>
-              <Image src={event.outcomeInsured.avatar} alt="Happy avatar" width={50} height={50} className="mx-auto mt-2" />
             </div>
 
             <div>
               <h4 className="text-lg font-medium text-gray-200 mb-2">Without Insurance:</h4>
               <p className="text-md text-gray-300">{event.outcomeUninsured.message}</p>
-              <p className="text-sm text-gray-400">
+			  <p className="text-md text-white font-bold">
                 Happiness: {event.outcomeUninsured.happinessChange > 0 ? '+' : ''}{event.outcomeUninsured.happinessChange},
                 Gold: {event.outcomeUninsured.goldChange > 0 ? '+' : ''}{event.outcomeUninsured.goldChange}
               </p>
-              <Image src={event.outcomeUninsured.avatar} alt="Sad avatar" width={50} height={50} className="mx-auto mt-2" />
             </div>
           </div>
         ))}

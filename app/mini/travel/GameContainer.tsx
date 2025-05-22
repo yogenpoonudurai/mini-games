@@ -98,10 +98,9 @@ const GameContainer = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-gray-100">
-      <div className="absolute top-4 left-4 text-sm text-gray-400 z-10">
-        <div className='grid grid-cols-4 gap-4 items-center text-white font-bold text-xl'>
-        <div>Phase: {gamePhase}</div>
+    <div className="flex flex-col items-center justify-center  bg-gray-900 text-gray-100">
+      <div className="top-4 left-4 text-sm text-gray-400 z-10">
+        <div className='grid grid-cols-3 gap-4 items-center text-white font-bold text-md lg:text-xl'>
         <div className='flex flex-row items-center space-x-2'><Image src="/images/coin.png" alt='coin' width={40} height={40}></Image> <div>{goldCoins}</div></div>
         <div className='flex flex-row items-center space-x-2'><Image src="/images/happy.png" alt='happy' width={40} height={40}></Image> <div>{happinessPoints}</div></div>
 
@@ -109,10 +108,12 @@ const GameContainer = () => {
         hasTravelInsurance ? <div className='flex flex-row items-center space-x-2'><Image src="/images/insurance.png" alt='coin' width={40} height={40} className={hasTravelInsurance ? "opacity-100": "opacity-0"}></Image> <div>{hasTravelInsurance ? 'Yes' : 'No'}</div></div>: null
        }
 
+
         </div>
 
       </div>
-
+    <div className='
+    '>
       {gamePhase === 'intro' && (
         <TravelIntroScreen onStartGame={handleStartGame} />
       )}
@@ -138,6 +139,7 @@ const GameContainer = () => {
           onReplay={handleReplay}
         />
       )}
+      </div>
     </div>
   );
 };
