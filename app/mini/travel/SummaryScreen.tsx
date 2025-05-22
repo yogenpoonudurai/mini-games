@@ -26,7 +26,7 @@ interface SummaryScreenProps {
   onReplay: () => void;
 }
 
-const SummaryScreen: React.FC<SummaryScreenProps> = ({ hasTravelInsurance, onReplay }) => {
+const SummaryScreen: React.FC<SummaryScreenProps> = ({ onReplay }) => {
   return (
     <div
       className="relative flex flex-col items-center justify-center h-screen w-screen p-4 text-center bg-cover bg-center"
