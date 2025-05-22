@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import TravelIntroScreen from './TravelIntroScreen';
 import EventCard from './EventCard';
 import ResultScreen from './ResultScreen';
+import SummaryScreen from './SummaryScreen';
 
 import Image from "next/image"
 
-const events = [
+export const events = [
   {
     scenario: "Oh no! Your flight to Azure Coast is delayed by 8 hours, and your luggage was sent to the wrong island!",
     image: "/images/lost-luggage.png",
@@ -84,6 +85,10 @@ const GameContainer = () => {
     }
   };
 
+  const handleViewSummary = () => {
+    setGamePhase('summary');
+  };
+
   const handleReplay = () => {
     setHasTravelInsurance(false);
     setGoldCoins(500);
@@ -99,7 +104,7 @@ const GameContainer = () => {
         <div>Phase: {gamePhase}</div>
         <div className='flex flex-row items-center space-x-2'><Image src="/images/coin.png" alt='coin' width={40} height={40}></Image> <div>{goldCoins}</div></div>
         <div className='flex flex-row items-center space-x-2'><Image src="/images/happy.png" alt='happy' width={40} height={40}></Image> <div>{happinessPoints}</div></div>
-        <div className='flex flex-row items-center space-x-2'><Image src="/images/insurance.png" alt='coin' width={40} height={40} className={hasTravelInsurance ? "opacity-100": "opacity-0"}></Image> <div>{hasTravelInsurance}</div></div>
+        <div className='flex flex-row items-center space-x-2'><Image src="/images/insurance.png" alt='coin' width={40} height={40} className={hasTravelInsurance ? "opacity-100": "opacity-0"}></Image> <div>{hasTravelInsurance ? 'Yes' : 'No'}</div></div>
         </div>
 
       </div>
@@ -118,6 +123,13 @@ const GameContainer = () => {
         <ResultScreen
           goldCoins={goldCoins}
           happinessPoints={happinessPoints}
+          hasTravelInsurance={hasTravelInsurance}
+          onReplay={handleReplay}
+          onViewSummary={handleViewSummary}
+        />
+      )}
+      {gamePhase === 'summary' && (
+        <SummaryScreen
           hasTravelInsurance={hasTravelInsurance}
           onReplay={handleReplay}
         />

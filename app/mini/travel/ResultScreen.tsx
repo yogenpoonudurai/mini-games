@@ -7,9 +7,10 @@ interface ResultScreenProps {
   happinessPoints: number;
   hasTravelInsurance: boolean;
   onReplay: () => void;
+  onViewSummary: () => void; // Added new prop
 }
 
-const ResultScreen: React.FC<ResultScreenProps> = ({ goldCoins, happinessPoints, hasTravelInsurance, onReplay }) => {
+const ResultScreen: React.FC<ResultScreenProps> = ({ goldCoins, happinessPoints, hasTravelInsurance, onReplay, onViewSummary }) => {
   let message = "";
 
   if (hasTravelInsurance) {
@@ -33,12 +34,20 @@ const ResultScreen: React.FC<ResultScreenProps> = ({ goldCoins, happinessPoints,
         <p className="text-lg text-gray-300 mb-2">Final Gold Coins: {goldCoins}</p>
         <p className="text-lg text-gray-300 mb-8">Final Happiness Points: {happinessPoints}</p>
         <p className="text-md text-gray-400 mb-8">{message}</p>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={onReplay}
-        >
-          Want to try another adventure?
-        </button>
+        <div className="flex flex-col sm:flex-row gap-4 mt-4">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={onReplay}
+          >
+            Play Again
+          </button>
+          <button
+            className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+            onClick={onViewSummary}
+          >
+            View Summary
+          </button>
+        </div>
       </div>
     </div>
   );
