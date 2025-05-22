@@ -104,7 +104,11 @@ const GameContainer = () => {
         <div>Phase: {gamePhase}</div>
         <div className='flex flex-row items-center space-x-2'><Image src="/images/coin.png" alt='coin' width={40} height={40}></Image> <div>{goldCoins}</div></div>
         <div className='flex flex-row items-center space-x-2'><Image src="/images/happy.png" alt='happy' width={40} height={40}></Image> <div>{happinessPoints}</div></div>
-        <div className='flex flex-row items-center space-x-2'><Image src="/images/insurance.png" alt='coin' width={40} height={40} className={hasTravelInsurance ? "opacity-100": "opacity-0"}></Image> <div>{hasTravelInsurance ? 'Yes' : 'No'}</div></div>
+
+       {
+        hasTravelInsurance ? <div className='flex flex-row items-center space-x-2'><Image src="/images/insurance.png" alt='coin' width={40} height={40} className={hasTravelInsurance ? "opacity-100": "opacity-0"}></Image> <div>{hasTravelInsurance ? 'Yes' : 'No'}</div></div>: null
+       }
+
         </div>
 
       </div>
